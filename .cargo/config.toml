@@ -1,0 +1,5 @@
+# Servo's build configuration, which cargo only reads from the workspace being built.
+# Keep in sync with servo's `.cargo/config.toml` and `python/servo/command_base.py`.
+[env]
+RUSTC_BOOTSTRAP = "crown,script,script_webgpu,script_bindings,style_tests,mozjs,mozjs_sys"
+SERVO_STYLE_THREAD_STACK_SIZE_KB = "8192"

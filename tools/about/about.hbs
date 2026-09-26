@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Third Party Licenses</title>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #333;
+                color: white;
+            }
+            a {
+                color: skyblue;
+            }
+        }
+        .container {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .intro {
+            text-align: center;
+        }
+        .licenses-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .license-used-by {
+            margin-top: -10px;
+        }
+        .license-text {
+            max-height: 200px;
+            overflow-y: scroll;
+            white-space: pre-wrap;
+        }
+        summary h2 {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="intro">
+            <h1>Third Party Licenses</h1>
+            <p>
+                This app contains the <a href="https://servo.org/">Servo</a> web engine and the
+                SpiderMonkey JavaScript engine, which are available under the terms of the
+                <a href="https://www.mozilla.org/en-US/MPL/2.0/">Mozilla Public License Version 2.0 (MPL)</a>,
+                as is Skiff, which embeds them. You can get the source code of Skiff from
+                <a href="https://github.com/openharmony-rs/skiff">skiff</a>, that of Servo from
+                <a href="https://github.com/openharmony-rs/servo-ohos">servo-ohos</a>, at the commit that the
+                <code>servo</code> submodule of Skiff records,
+                and that of SpiderMonkey from <a href="https://github.com/servo/mozjs">mozjs</a>.
+                The remaining third party components are licensed under one or more of the free software
+                licenses below.
+            </p>
+        </div>
+
+        <ul class="licenses-overview">
+            {{#each overview}}
+            <li><a href="#{{id}}">{{name}}</a></li>
+            {{/each}}
+        </ul>
+        <p>Components that are not Rust crates:</p>
+        <ul>
+            {{> spidermonkey-overview}}
+            <li><a href="#libcxx">libc++, libc++abi and libunwind</a></li>
+            <li><a href="#rust-std">The Rust Standard Library</a></li>
+            <li><a href="#data-files">Data files</a></li>
+        </ul>
+
+        <h2>All license text:</h2>
+        <ul class="licenses-list">
+            {{#each licenses}}
+            <li class="license">
+                <h3 id="{{id}}">{{name}}</h3>
+                {{#if used_by.[1]}}
+                    <h4>Used by:</h4>
+                    <ul class="license-used-by">
+                        {{#each used_by}}
+                        <li><a href="{{#if crate.repository}} {{crate.repository}} {{else}} https://crates.io/crates/{{crate.name}} {{/if}}">{{crate.name}} {{crate.version}}</a></li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                    <p>
+                        Used by
+                        {{#each used_by}}
+                            <a href="{{#if crate.repository}} {{crate.repository}} {{else}} https://crates.io/crates/{{crate.name}} {{/if}}">{{crate.name}} {{crate.version}}</a>
+                        {{/each}}
+                    </p>
+                {{/if}}
+                <pre class="license-text">{{text}}</pre>
+            </li>
+            {{/each}}
+        </ul>
+
+        {{> spidermonkey}}
+        {{> libcxx}}
+        {{> rust-std}}
+        {{> data-files}}
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "libskiff.so",
+  "types": "./index.d.ts",
+  "version": "0.1.0",
+  "description": "Node-API module of Skiff, built from crates/napi"
+}

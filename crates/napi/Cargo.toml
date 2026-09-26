@@ -1,0 +1,27 @@
+[package]
+name = "skiff-napi"
+description = "Node-API module behind the SkiffView ArkTS component"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+rust-version.workspace = true
+
+[lib]
+# The XComponents of SkiffView load the library by this name.
+name = "skiff"
+crate-type = ["cdylib"]
+
+[dependencies]
+dpi = { workspace = true }
+env_filter = { workspace = true }
+hilog = { workspace = true }
+keyboard-types = { workspace = true }
+log = { workspace = true }
+napi-derive-ohos = { workspace = true }
+napi-ohos = { workspace = true }
+ohos-abilitykit-sys = { workspace = true }
+ohos-window-manager-sys = { workspace = true }
+serde_json = { workspace = true }
+skiff-core = { workspace = true }
+xcomponent-sys = { workspace = true }

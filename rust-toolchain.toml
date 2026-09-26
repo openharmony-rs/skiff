@@ -1,0 +1,5 @@
+[toolchain]
+# Must match servo's `rust-toolchain.toml`.
+channel = "1.97.1"
+components = ["clippy", "rustfmt", "rust-src"]
+targets = ["aarch64-unknown-linux-ohos", "x86_64-unknown-linux-ohos"]

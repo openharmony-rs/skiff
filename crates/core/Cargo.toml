@@ -1,0 +1,32 @@
+[package]
+name = "skiff-core"
+description = "Servo engine thread and webviews for OpenHarmony apps"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+dpi = { workspace = true }
+euclid = { workspace = true }
+flate2 = { workspace = true }
+headers = { workspace = true }
+# Servo on OpenHarmony only supports running in a single process.
+ipc-channel = { workspace = true, features = ["force-inprocess"] }
+keyboard-types = { workspace = true }
+log = { workspace = true }
+ohos-ime = { workspace = true }
+ohos-ime-sys = { workspace = true }
+ohos-sys-opaque-types = { workspace = true }
+ohos-vsync = { workspace = true }
+ohos-window-sys = { workspace = true }
+raw-window-handle = { workspace = true }
+rustls = { workspace = true }
+serde_json = { workspace = true }
+servo = { workspace = true, features = ["bundled", "clipboard", "js_jit", "sqlite-backend", "webcrypto"] }
+servo-default-resources = { workspace = true }
+url = { workspace = true }
+
+[build-dependencies]
+flate2 = { workspace = true }

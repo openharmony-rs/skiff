@@ -1,0 +1,119 @@
+# The configuration of cargo-about for Servo's own dependencies. It is a proposal for servo's
+# about.toml, and tools/update-licenses.py combines it with overlay.toml. mozjs_sys is missing, since
+# update-licenses.py adds its notices.
+
+accepted = [
+    "Apache-2.0 WITH LLVM-exception",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-2-Clause-Views",
+    "BSD-3-Clause",
+    "BSL-1.0",
+    "blessing",
+    "CC0-1.0",
+    "CDLA-Permissive-2.0",
+    "dtoa",
+    "FTL",
+    "ICU",
+    "ISC",
+    "libpng-2.0",
+    "MIT",
+    "MIT-Modern-Variant",
+    "MPL-2.0",
+    "NCSA",
+    "OpenSSL",
+    "OFL-1.1",
+    "SunPro",
+    "Ubuntu-font-1.0",
+    "Unicode-3.0",
+    "Zlib",
+]
+
+# The sys crates declare the license of their Rust code, not of the C and C++ libraries that they
+# build.
+[harfbuzz-sys.clarify]
+license = "MIT AND MIT-Modern-Variant AND Unicode-3.0"
+
+[[harfbuzz-sys.clarify.files]]
+path = "LICENSE-MIT"
+license = "MIT"
+checksum = "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
+
+[[harfbuzz-sys.clarify.files]]
+path = "harfbuzz/COPYING"
+license = "MIT-Modern-Variant"
+checksum = "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64"
+
+[[harfbuzz-sys.clarify.files]]
+path = "harfbuzz/src/ms-use/COPYING"
+license = "MIT"
+checksum = "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+
+[zstd-sys.clarify]
+license = "MIT AND BSD-3-Clause"
+
+[[zstd-sys.clarify.files]]
+path = "LICENSE.Mit"
+license = "MIT"
+checksum = "129e8edef29e9abcd2ebabe252f4ef1b1289cdca356bf0040284a2fbccfb96c8"
+
+[[zstd-sys.clarify.files]]
+path = "zstd/LICENSE"
+license = "BSD-3-Clause"
+checksum = "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+
+# LICENSE has all notices of AWS-LC, with the texts of each license, so it is listed once.
+[aws-lc-sys.clarify]
+license = "ISC AND Apache-2.0 AND MIT AND BSD-3-Clause"
+
+[[aws-lc-sys.clarify.files]]
+path = "LICENSE"
+license = "ISC"
+checksum = "728536b4160e051f86d7c9c388f704866b3d512cd7df97ac3516c65279523c4e"
+
+[[aws-lc-sys.clarify.files]]
+path = "aws-lc/third_party/fiat/LICENSE"
+license = "MIT"
+checksum = "43e358d7b6eb109d0f51f7b3a090fd82607965767c25fadee39e922475de2061"
+
+# freetype-sys builds the FreeType, libpng and zlib sources that it bundles.
+[freetype-sys.clarify]
+license = "MIT AND FTL AND libpng-2.0 AND Zlib"
+
+[[freetype-sys.clarify.files]]
+path = "LICENSE"
+license = "MIT"
+checksum = "8911cb953a89daca54f0ab96616f5e447e2b1399fba7ec098872cfdacde5354b"
+
+[[freetype-sys.clarify.files]]
+path = "freetype2/docs/FTL.TXT"
+license = "FTL"
+checksum = "5a5ee54c5001bbad1cdc1a57cc3dd4c42199b2da09d39c7ee41fab002d02967f"
+
+[[freetype-sys.clarify.files]]
+path = "libpng/LICENSE"
+license = "libpng-2.0"
+checksum = "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526"
+
+[[freetype-sys.clarify.files]]
+path = "freetype2/src/gzip/zlib.h"
+license = "Zlib"
+checksum = "4e59abeed7e1aaaa8556e2da22d65ee92ae00d976f5d00f0e99e3544c38c5309"
+start = "Copyright (C) 1995-2024 Jean-loup Gailly and Mark Adler"
+end = "madler@alumni.caltech.edu"
+
+[libsqlite3-sys.clarify]
+license = "MIT AND blessing"
+
+[[libsqlite3-sys.clarify.files]]
+path = "LICENSE"
+license = "MIT"
+checksum = "c10c1f27337546471e5f7e4e97fdd398b35b9d4e126115dcd22de8d8e65abf6f"
+
+[[libsqlite3-sys.clarify.files]]
+path = "sqlite3/sqlite3.c"
+license = "blessing"
+checksum = "1e60ef821477b022d622792e3493f65a54d0b638fea612ff8fb3f9d8802f4966"
+start = "The author disclaims copyright to this source code."
+end = "never taking more than you give."
+

@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "Skiff demo"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "Skiff demo"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Skiff"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+[submodule "servo"]
+	path = servo
+	url = https://github.com/openharmony-rs/servo-ohos.git
+	branch = ohos-main
+	shallow = true

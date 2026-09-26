@@ -1,0 +1,10 @@
+{
+  "name": "@openharmony-rs/skiff",
+  "version": "0.1.0",
+  "description": "A webview component backed by the Servo web engine",
+  "main": "Index.ets",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "libskiff.so": "file:./types/libskiff"
+  }
+}

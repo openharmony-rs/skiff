@@ -1,0 +1,5 @@
+# What this package adds to the configuration of cargo-about in servo.toml.
+
+targets = ["aarch64-unknown-linux-ohos"]
+ignore-build-dependencies = true
+ignore-dev-dependencies = true

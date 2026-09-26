@@ -1,0 +1,14 @@
+/target
+/.hvigor
+/.idea
+/build
+/oh_modules
+/local.properties
+/entry/build
+/entry/oh_modules
+/entry/.cxx
+/skiff/build
+/skiff/oh_modules
+/skiff/libs
+/skiff/.cxx
+/skiff/BuildProfile.ets

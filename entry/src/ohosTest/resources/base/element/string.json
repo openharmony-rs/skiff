@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_test_desc",
+      "value": "Tests of Skiff"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "Hosts the SkiffView components under test"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "Skiff tests"
+    }
+  ]
+}
