@@ -25,15 +25,16 @@ struct Page {
 | -------------------------- | ----------------------------------------------------------------------------------------- |
 | `crates/core`              | The Servo thread and its webviews: surfaces, vsync, input, soft keyboard. No Node-API.    |
 | `crates/napi`              | `libskiff.so`: the Node-API functions and the XComponent callbacks.                       |
-| `skiff`                    | The HAR: `SkiffView`, `SkiffController`, `SkiffRuntime`. Builds `crates/napi`.            |
+| `library`                  | The HAR: `SkiffView`, `SkiffController`, `SkiffRuntime`. Builds `crates/napi`.            |
 | `entry`                    | A demo and test app with an address bar.                                                  |
 | `entry/src/ohosTest`       | On-device tests of the HAR, run in the process of the demo app.                           |
 | `justfile`                 | Recipes to format, lint, build, install and test; `just --list` shows them.               |
 | `tools/sign-hap.py`        | Signs a HAP with the public OpenHarmony test keys.                                        |
 | `tools/update-licenses.py` | Regenerates the license page of `servo:license` with the configuration in `tools/about/`. |
 
-The repository root is also the hvigor project of the demo app, with `skiff` and `entry` as its
-modules, so that DevEco Studio can open it.
+The repository root is also the hvigor project of the demo app, with `library` and `entry` as its
+modules, so that DevEco Studio can open it. DevEco Studio also refuses a module named like the
+project, which is the name of the directory the repository is cloned into.
 
 Servo comes from the `servo` submodule, a commit of the `ohos-main` branch of
 [servo-ohos](https://github.com/openharmony-rs/servo-ohos). Cargo does not apply the profiles,
@@ -53,9 +54,9 @@ cd skiff
 CARGO_TARGET_DIR=/path/to/target just install
 ```
 
-hvigor runs cargo for the `skiff` module with the
+hvigor runs cargo for the `library` module with the
 [hvigor-cargo](https://github.com/openharmony-rs/hvigor-cargo) plugin from npm, which puts
-`libskiff.so` and `libc++.so` into `skiff/libs` and from there into the HAR and the HAP. Both
+`libskiff.so` and `libc++.so` into `library/libs` and from there into the HAR and the HAP. Both
 build modes build the `release` cargo profile, since an unoptimized Servo is too slow to be useful.
 Servo is built with the features `bundled`, `clipboard`, `js_jit`, `sqlite-backend` and
 `webcrypto`, so WebGL, WebGPU and WebXR are not available.

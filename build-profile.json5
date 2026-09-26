@@ -30,8 +30,8 @@
       ]
     },
     {
-      "name": "skiff",
-      "srcPath": "./skiff"
+      "name": "library",
+      "srcPath": "./library"
     }
   ]
 }

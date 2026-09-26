@@ -7,8 +7,8 @@
 /entry/build
 /entry/oh_modules
 /entry/.cxx
-/skiff/build
-/skiff/oh_modules
-/skiff/libs
-/skiff/.cxx
-/skiff/BuildProfile.ets
+/library/build
+/library/oh_modules
+/library/libs
+/library/.cxx
+/library/BuildProfile.ets

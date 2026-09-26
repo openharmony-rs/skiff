@@ -4,6 +4,6 @@
   "description": "Demo app for Skiff",
   "license": "MPL-2.0",
   "dependencies": {
-    "@openharmony-rs/skiff": "file:../skiff"
+    "@openharmony-rs/skiff": "file:../library"
   }
 }
