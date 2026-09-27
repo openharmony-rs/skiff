@@ -23,7 +23,11 @@ async function fieldValue(slot: Harness.Slot): Promise<string> {
 /** Taps the field of `INPUT_PAGE` and waits until it has the focus and the soft keyboard shows. */
 async function focusField(driver: Driver, slot: Harness.Slot): Promise<void> {
   const field = pointIn(await bounds(driver, slot), 0.5, 0.2);
-  await driver.click(field.x, field.y);
+  try {
+    await driver.click(field.x, field.y);
+  } catch (error) {
+    throw new Error(`Tapping the field failed: ${(error as Error).message}`);
+  }
   await Harness.waitUntil(async () => await activeElementId(slot) === 'field', 'the field to be focused');
   await Harness.waitUntil(async () => Harness.keyboardHeight() > 0, 'the soft keyboard to show');
 }

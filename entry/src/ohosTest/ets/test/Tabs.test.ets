@@ -18,8 +18,7 @@ function coloredPage(title: string, color: string): string {
  * Opens, switches and closes tabs, each a `SkiffView`, like a browser would, with the inactive
  * tabs set to `hidden`.
  */
-async function exerciseTabs(hidden: Visibility): Promise<void> {
-  const driver = Driver.create();
+async function exerciseTabs(driver: Driver, hidden: Visibility): Promise<void> {
   Harness.useTabs(hidden);
 
   const first = Harness.show(coloredPage('First', '#00ff00'));
@@ -76,11 +75,11 @@ export default function tabsTest() {
     });
 
     it('switchesTabsKeptInLayout', 0, async () => {
-      await exerciseTabs(Visibility.Hidden);
+      await exerciseTabs(Driver.create(), Visibility.Hidden);
     });
 
     it('switchesTabsRemovedFromLayout', 0, async () => {
-      await exerciseTabs(Visibility.None);
+      await exerciseTabs(Driver.create(), Visibility.None);
     });
   });
 }

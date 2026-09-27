@@ -3,7 +3,7 @@
 An alternative to ArkWeb's `Web` component, backed by the [Servo](https://servo.org) web engine, in
 the spirit of GeckoView on Android: an app adds the `@openharmony-rs/skiff` HAR and uses the
 `SkiffView` component instead of `Web`. No system modification is needed, so it works wherever the
-app can be installed.
+app can be installed, from OpenHarmony 7.0 (API 26) on.
 
 ```ts
 import { SkiffView, SkiffController } from '@openharmony-rs/skiff';
@@ -44,9 +44,10 @@ copy of servo's to get the same dependency versions.
 
 ## Building
 
-Needs rustup, `cargo install cargo-ohos just`, the OpenHarmony SDK in `$OHOS_BASE_SDK_HOME/21`,
-Java and the command line tools (`ohpm`, `hvigorw`). Clone with the submodule, which is shallow, and
-let `just install` build the demo app with hvigor, sign it and install it with `hdc`:
+Needs rustup, `cargo install cargo-ohos just`, the OpenHarmony SDK for API 26 in
+`$OHOS_BASE_SDK_HOME/26.0.0`, Java and command line tools (`ohpm`, `hvigorw`) that support it. Clone
+with the submodule, which is shallow, and let `just install` build the demo app with hvigor, sign it
+and install it with `hdc`:
 
 ```sh
 git clone --recurse-submodules https://github.com/openharmony-rs/skiff

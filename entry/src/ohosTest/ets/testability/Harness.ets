@@ -135,7 +135,11 @@ export function setMainWindow(pageWindow: window.Window): void {
 
 /** The height of the soft keyboard in pixels, 0 while it is hidden. */
 export function keyboardHeight(): number {
-  return mainWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_KEYBOARD).bottomRect.height ?? 0;
+  try {
+    return mainWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_KEYBOARD).bottomRect.height ?? 0;
+  } catch (error) {
+    throw new Error(`Getting the area of the soft keyboard failed: ${(error as Error).message}`);
+  }
 }
 
 export function slot(id: number): Slot {

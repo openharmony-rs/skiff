@@ -18,8 +18,12 @@ export const GRAY = [128, 128, 128];
 
 /** The bounds of the slot on the screen, in pixels. */
 export async function bounds(driver: Driver, slot: Harness.Slot): Promise<Rect> {
-  const component = await driver.waitForComponent(ON.id('slot-' + slot.id), 5000);
-  return component.getBounds();
+  try {
+    const component = await driver.waitForComponent(ON.id('slot-' + slot.id), 5000);
+    return await component.getBounds();
+  } catch (error) {
+    throw new Error(`Getting the bounds of slot ${slot.id} failed: ${(error as Error).message}`);
+  }
 }
 
 /** The point at the given fractions of the width and height of the bounds. */
@@ -33,8 +37,12 @@ export function pointIn(rect: Rect, x: number = 0.5, y: number = 0.5): Point {
 /** The colours of the screen at the points, as `[red, green, blue]`, from one screenshot. */
 export async function colorsAt(driver: Driver, points: Point[]): Promise<number[][]> {
   const path = abilityDelegatorRegistry.getAbilityDelegator().getAppContext().cacheDir + '/screen.png';
-  if (!(await driver.screenCap(path))) {
-    throw new Error('Taking a screenshot failed');
+  try {
+    if (!(await driver.screenCap(path))) {
+      throw new Error('the driver could not save it');
+    }
+  } catch (error) {
+    throw new Error(`Taking a screenshot failed: ${(error as Error).message}`);
   }
   const source = image.createImageSource(path);
   const pixelMap = await source.createPixelMap();

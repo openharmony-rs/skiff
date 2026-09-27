@@ -18,7 +18,12 @@ export default class TestAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    Harness.setMainWindow(windowStage.getMainWindowSync());
+    try {
+      Harness.setMainWindow(windowStage.getMainWindowSync());
+    } catch (error) {
+      hilog.error(0x0000, 'SkiffTest', 'Getting the main window failed: %{public}s',
+        (error as Error).message);
+    }
     windowStage.loadContent('testability/pages/Index', (error) => {
       if (error.code) {
         hilog.error(0x0000, 'SkiffTest', 'Loading the test page failed: %{public}s', error.message);

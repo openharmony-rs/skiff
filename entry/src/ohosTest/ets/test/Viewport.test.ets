@@ -14,7 +14,12 @@ async function evaluateNumber(slot: Harness.Slot, script: string): Promise<numbe
 
 /** Waits until the viewport of the page has the size of the slot, in CSS pixels. */
 async function waitForViewportOfSlot(driver: Driver, slot: Harness.Slot): Promise<void> {
-  const density = display.getDefaultDisplaySync().densityPixels;
+  let density = 1;
+  try {
+    density = display.getDefaultDisplaySync().densityPixels;
+  } catch (error) {
+    throw new Error(`Getting the display density failed: ${(error as Error).message}`);
+  }
   let expected = '';
   let actual = '';
   try {

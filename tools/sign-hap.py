@@ -34,7 +34,7 @@ def main() -> int:
         type=Path,
         help="the OpenHarmony SDK, by default $OHOS_BASE_SDK_HOME/<api>",
     )
-    parser.add_argument("--api", default="21", help="the API level of the SDK to use (default: 21)")
+    parser.add_argument("--api", default="26.0.0", help="the API level of the SDK to use (default: 26.0.0)")
     args = parser.parse_args()
 
     sdk = args.sdk

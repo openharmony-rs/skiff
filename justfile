@@ -18,7 +18,7 @@ fmt *args:
 # Lints the Rust code, with the host compilers of `library/hvigorfile.ts`.
 clippy *args:
     CC=clang CXX=clang++ HOST_CC=clang HOST_CXX=clang++ HOST_CFLAGS= HOST_CXXFLAGS= \
-        cargo ohos clippy --target aarch64 --sdk "$OHOS_BASE_SDK_HOME/21/native" \
+        cargo ohos clippy --target aarch64 --sdk "$OHOS_BASE_SDK_HOME/26.0.0/native" \
         --download-prebuilt 19 --release -p skiff-core -p skiff-napi "$@"
 
 # Regenerates the license page of `servo:license`. Run it after changing dependencies.

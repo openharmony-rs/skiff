@@ -19,13 +19,17 @@ function experimentalValues(): string {
 
 /** Opens a page from the menu, and waits until the menu, which would take taps, closed. */
 async function openMenuItem(driver: Driver, item: string): Promise<void> {
-  await (await driver.waitForComponent(ON.id('menu'), 5000)).click();
-  await (await driver.waitForComponent(ON.text(item).type('Option'), 5000)).click();
-  await Harness.waitUntil(async () => {
-    const option = await driver.findComponent(ON.type('Option'));
-    return option === null || option === undefined;
-  }, 'the menu to close');
-  await driver.waitForIdle(500, 5000);
+  try {
+    await (await driver.waitForComponent(ON.id('menu'), 5000)).click();
+    await (await driver.waitForComponent(ON.text(item).type('Option'), 5000)).click();
+    await Harness.waitUntil(async () => {
+      const option = await driver.findComponent(ON.type('Option'));
+      return option === null || option === undefined;
+    }, 'the menu to close');
+    await driver.waitForIdle(500, 5000);
+  } catch (error) {
+    throw new Error(`Opening ${item} from the menu failed: ${(error as Error).message}`);
+  }
 }
 
 /**
